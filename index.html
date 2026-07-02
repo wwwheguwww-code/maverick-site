@@ -76,10 +76,15 @@ nav a:hover{color:var(--lime)}
 @media(max-width:680px){.hero::before{display:none}}
 
 /* hero */
-.hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 12vw;overflow:clip;background:
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 12vw;overflow:clip;
+  background-image:
   linear-gradient(200deg,rgba(10,10,10,.28) 0%,rgba(10,10,10,.86) 78%),
-  url('images/hero.jpg'), url('https://lh3.googleusercontent.com/d/1JHzCrXJg0VSUGK3w3_Yi1K3VBnEVz9kv=w1600') center 30%/cover no-repeat,
+  url('images/hero.jpg'),
+  url('https://lh3.googleusercontent.com/d/1JHzCrXJg0VSUGK3w3_Yi1K3VBnEVz9kv=w1600'),
   repeating-linear-gradient(115deg,#101010 0 2px,#0A0A0A 2px 96px);
+  background-position:center,center 30%,center 30%,center;
+  background-size:cover,cover,cover,auto;
+  background-repeat:no-repeat;
   clip-path:var(--slash)}
 .hero::before{content:"1 vs 1";position:absolute;top:8%;right:0;font-family:var(--font-display);font-weight:800;font-size:clamp(120px,24vw,340px);color:transparent;-webkit-text-stroke:1px #1E1E1E;line-height:1;pointer-events:none;user-select:none}
 .hero .wrap{position:relative;z-index:2}
