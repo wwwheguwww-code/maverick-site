@@ -31,7 +31,7 @@
 <meta name="description" content="鷺沼・川崎・横浜青葉・世田谷の1対1特化型ジュニアサッカースクール。元Fリーガーが『奪う・剥がす・仕掛ける』を言語化して指導。無料体験受付中。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@700;800&family=Oswald:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 /* ================= サイト設定（ここを書き換えれば全体に反映） ================= */
 :root{
@@ -42,7 +42,8 @@
   --white:#FFFFFF;
   --gray:#8A8F98;      /* 補足テキスト */
   --line:#232323;      /* 枠線 */
-  --font-en:'Oswald',sans-serif;        /* 英字見出しフォント */
+  --font-display:'Saira Condensed',sans-serif;   /* 巨大見出し。候補: 'Anton'(太いポスター体) 'Oswald'(細身) */
+  --font-en:'Oswald',sans-serif;        /* 英字ラベル・小見出し */
   --font-jp:'Noto Sans JP',sans-serif;  /* 日本語フォント */
   --slash:polygon(0 0,100% 0,100% calc(100% - 4.5vw),0 100%);
   --slash-r:polygon(0 0,100% 0,100% 100%,0 calc(100% - 4.5vw));
@@ -64,10 +65,9 @@ h2 .lm{color:var(--lime)}
 
 /* header */
 header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;background:linear-gradient(180deg,rgba(10,10,10,.92),rgba(10,10,10,.55) 70%,transparent);backdrop-filter:blur(6px)}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700}
-.logo .m{width:34px;height:34px;display:grid;place-items:center;border:2px solid var(--white);font-family:'Oswald';font-weight:700;font-size:18px;position:relative}
-.logo .m::after{content:"";position:absolute;right:-5px;top:6px;width:14px;height:2px;background:var(--lime);transform:rotate(-35deg)}
-.logo span.t{font-family:'Oswald';font-size:15px;letter-spacing:.18em}
+.logo{display:flex;align-items:center}
+.logo img{height:60px;width:auto;display:block}
+@media(max-width:520px){.logo img{height:42px}}
 nav{display:flex;gap:26px;font-size:13px;color:#CFD3D9}
 nav a:hover{color:var(--lime)}
 .cta-mini{background:var(--lime);color:#0A0A0A;font-weight:900;font-size:13px;padding:10px 18px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%)}
@@ -76,13 +76,13 @@ nav a:hover{color:var(--lime)}
 /* hero */
 .hero{min-height:100svh;display:flex;align-items:flex-end;padding:120px 0 12vw;background:
   linear-gradient(200deg,rgba(10,10,10,.45) 0%,rgba(10,10,10,.94) 74%),
-  url('images/hero.jpg') center 30%/cover no-repeat,
+  url('images/hero.jpg'), url('https://lh3.googleusercontent.com/d/1JHzCrXJg0VSUGK3w3_Yi1K3VBnEVz9kv=w1600') center 30%/cover no-repeat,
   repeating-linear-gradient(115deg,#101010 0 2px,#0A0A0A 2px 96px);
   clip-path:var(--slash)}
-.hero::before{content:"1 vs 1";position:absolute;top:8%;right:-2%;font-family:'Oswald';font-weight:700;font-size:clamp(120px,24vw,340px);color:transparent;-webkit-text-stroke:1px #1E1E1E;line-height:1;pointer-events:none;user-select:none}
+.hero::before{content:"1 vs 1";position:absolute;top:8%;right:-2%;font-family:var(--font-display);font-weight:800;font-size:clamp(120px,24vw,340px);color:transparent;-webkit-text-stroke:1px #1E1E1E;line-height:1;pointer-events:none;user-select:none}
 .hero .wrap{position:relative;z-index:2}
 .hero .tag{color:var(--lime);font-weight:700;font-size:clamp(13px,1.8vw,16px);letter-spacing:.28em;margin-bottom:14px}
-.hero h1{font-family:'Oswald';font-weight:700;font-size:clamp(52px,11vw,128px);line-height:.98;letter-spacing:.01em}
+.hero h1{font-family:var(--font-display);font-weight:800;font-size:clamp(52px,11vw,128px);line-height:.98;letter-spacing:.01em}
 .hero h1 .slash{color:var(--lime)}
 .hero .jp{font-size:clamp(15px,2.4vw,20px);font-weight:700;margin-top:16px}
 .hero .verbs{display:flex;gap:14px;margin:26px 0 34px;flex-wrap:wrap}
@@ -128,11 +128,18 @@ nav a:hover{color:var(--lime)}
 /* gallery（練習風景） */
 .gallery{padding:0 0 110px}
 .gallery .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
-.gph{aspect-ratio:4/3;background:repeating-linear-gradient(115deg,#161616 0 10px,#111 10px 20px);background-size:cover;background-position:center;border:1px solid var(--line);display:grid;place-items:center;color:#5A5F66;font-size:12px;transition:transform .25s ease}
-.gph:hover{transform:scale(1.02)}
-.gallery .grid .gph:nth-child(2){transform:translateY(18px)}
-.gallery .grid .gph:nth-child(2):hover{transform:translateY(18px) scale(1.02)}
-@media(max-width:760px){.gallery .grid{grid-template-columns:1fr}.gallery .grid .gph:nth-child(2){transform:none}}
+.gph{aspect-ratio:4/3;background:repeating-linear-gradient(115deg,#161616 0 10px,#111 10px 20px);background-size:cover;background-position:center;border:1px solid var(--line);display:grid;place-items:center;color:#5A5F66;font-size:12px;position:relative;transition:transform .25s ease,border-color .25s ease}
+.gph:hover{transform:scale(1.03);border-color:var(--lime)}
+.gph::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:4px;background:var(--lime);transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+.gph:hover::after{transform:scaleX(1)}
+/* 3枚が左から順番にふわっと現れる */
+.rv .gph{opacity:0;transform:translateY(16px)}
+.rv.on .gph{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease,border-color .25s ease}
+.rv.on .gph:nth-child(2){transition-delay:.18s}
+.rv.on .gph:nth-child(3){transition-delay:.36s}
+.rv.on .gph:hover{transform:scale(1.03)}
+@media(max-width:760px){.gallery .grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.rv .gph{opacity:1;transform:none}}
 .coach .name{font-size:30px;font-weight:900}
 .coach .name small{display:block;color:var(--lime);font-family:'Oswald';font-size:14px;letter-spacing:.2em;margin-bottom:6px}
 .coach p{color:var(--gray);font-size:14.5px;margin-top:16px}
@@ -180,8 +187,8 @@ nav a:hover{color:var(--lime)}
 /* footer */
 footer{padding:60px 0 110px;border-top:1px solid var(--line)}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
-footer .fl{font-family:'Oswald';font-size:22px;letter-spacing:.14em}
-footer .fl small{display:block;font-family:'Noto Sans JP';font-size:11px;color:var(--gray);letter-spacing:.06em;margin-top:6px}
+.flogo{height:84px;width:auto;display:block}
+.fl-sub{font-size:11px;color:var(--gray);margin-top:10px}
 footer .sns a{display:inline-flex;align-items:center;gap:8px;border:1px solid #2E2E2E;padding:10px 18px;font-size:13px;font-weight:700}
 footer .sns a:hover{border-color:var(--lime);color:var(--lime)}
 footer .legal{width:100%;color:#5A5F66;font-size:11px;margin-top:8px}
@@ -201,8 +208,7 @@ footer .legal{width:100%;color:#5A5F66;font-size:11px;margin-top:8px}
 
 <header>
   <a class="logo" href="#top" aria-label="MAVERICK FOOTBALL ACADEMY">
-    <span class="m en">M</span>
-    <span class="t en">MAVERICK</span>
+    <img src="images/logo.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1Wfj6vPHDmXUHcpl35pa1kKfwrMG0wZOi'" alt="MAVERICK FOOTBALL ACADEMY">
   </a>
   <nav>
     <a href="#why">1対1とは</a>
@@ -287,7 +293,7 @@ footer .legal{width:100%;color:#5A5F66;font-size:11px;margin-top:8px}
     <p class="eyebrow">Coach</p>
     <h2>教えるのは、<span class="lm">元Fリーガー</span>。</h2>
     <div class="flex">
-      <div class="ph img" style="background-image:url('images/coach.jpg')">［コーチ写真：images/coach.jpg を置くと表示されます］</div>
+      <div class="ph img" style="background-image:url('images/coach.jpg'), url('https://lh3.googleusercontent.com/d/1vquUD0hLL0dQSPTQyr0OBpwTpLpy7F7Y=w1600')">［コーチ写真：images/coach.jpg を置くと表示されます］</div>
       <div>
         <p class="name"><small class="en">HEAD COACH</small>永島 俊</p>
         <p>Fリーグでプレーしたプロフェッショナルとして、トップレベルで通用する1対1の駆け引きを知り尽くす。「なんとなく上手い」で終わらせず、一つひとつのプレーを言葉にして、子どもたちが自分で再現できるところまで導く。</p>
@@ -308,9 +314,9 @@ footer .legal{width:100%;color:#5A5F66;font-size:11px;margin-top:8px}
     <!-- ✏️ -->
     <h2>ピッチの上が、いちばん<span class="lm">雄弁</span>。</h2>
     <div class="grid">
-      <div class="gph" style="background-image:url('images/gallery1.jpg')">［練習風景①：images/gallery1.jpg］</div>
-      <div class="gph" style="background-image:url('images/gallery2.jpg')">［練習風景②：images/gallery2.jpg］</div>
-      <div class="gph" style="background-image:url('images/gallery3.jpg')">［練習風景③：images/gallery3.jpg］</div>
+      <div class="gph" style="background-image:url('images/gallery1.jpg'), url('https://lh3.googleusercontent.com/d/1Awux7OQ4HfZq0fOQGDwiu1EwA7wzKef_=w1600')">［練習風景①：images/gallery1.jpg］</div>
+      <div class="gph" style="background-image:url('images/gallery2.jpg'), url('https://lh3.googleusercontent.com/d/1mgJWz288DGFIB6QHwtgZGh2Vtlujpmc6=w1600')">［練習風景②：images/gallery2.jpg］</div>
+      <div class="gph" style="background-image:url('images/gallery3.jpg'), url('https://lh3.googleusercontent.com/d/1k6yydH1M8BWepO6cT8twYUm_g-Ra06yU=w1600')">［練習風景③：images/gallery3.jpg］</div>
     </div>
   </div>
 </section>
@@ -408,7 +414,10 @@ footer .legal{width:100%;color:#5A5F66;font-size:11px;margin-top:8px}
 
 <footer>
   <div class="wrap">
-    <p class="fl en">MAVERICK<small>FOOTBALL ACADEMY — 鷺沼・川崎の1対1特化型サッカースクール</small></p>
+    <div class="fl-wrap">
+      <img class="flogo" src="images/logo.png" onerror="this.onerror=null;this.src='https://lh3.googleusercontent.com/d/1Wfj6vPHDmXUHcpl35pa1kKfwrMG0wZOi'" alt="MAVERICK FOOTBALL ACADEMY">
+      <p class="fl-sub">鷺沼・川崎の1対1特化型サッカースクール</p>
+    </div>
     <p class="sns"><a href="https://www.instagram.com/maverick_football_jp/" target="_blank" rel="noopener">Instagram @maverick_football_jp →</a></p>
     <p class="legal">© MAVERICK FOOTBALL ACADEMY ／ 特定商取引法に基づく表記（SHOP公開時に追加）・プライバシーポリシー</p>
   </div>
